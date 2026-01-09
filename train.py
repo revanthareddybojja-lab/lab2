@@ -4,6 +4,7 @@ import os
 import joblib
 
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
@@ -22,8 +23,10 @@ features.remove("quality")
 X = data[features]
 y = data["quality"]
 
+X = StandardScaler().fit_transform(X)
+
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.25, random_state=42
 )
 
 model = LinearRegression()
@@ -40,7 +43,7 @@ print("R2:", r2)
 joblib.dump(model, f"{OUTPUT_DIR}/model.pkl")
 
 json.dump(
-    {"experiment": "EXP-03", "mse": mse, "r2": r2},
+    {"experiment": "EXP-04", "mse": mse, "r2": r2},
     open(f"{OUTPUT_DIR}/results.json", "w"),
     indent=4
 )
