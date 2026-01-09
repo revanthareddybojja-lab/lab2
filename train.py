@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.linear_model import Ridge
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_PATH = os.path.join(BASE_DIR, "dataset", "winequality-red.csv")
@@ -25,8 +26,8 @@ y = data["quality"]
 
 
 MODEL_TYPE = "linear"
-USE_SCALER = False
-TEST_SIZE = 0.2
+USE_SCALER = True
+TEST_SIZE = 0.3
 
 
 
@@ -40,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=TEST_SIZE, random_state=42
 )
 
-model = LinearRegression()
+model = Ridge(alpha=1.0)
 
 
 
