@@ -19,10 +19,10 @@ X = data.drop("quality", axis=1)
 y = data["quality"]
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.3, random_state=42
 )
 
-model = RandomForestRegressor(n_estimators=50, max_depth=10, random_state=42)
+model = RandomForestRegressor(n_estimators=100, max_depth=15, random_state=42)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
@@ -36,7 +36,7 @@ print("R2:", r2)
 joblib.dump(model, f"{OUTPUT_DIR}/model.pkl")
 
 json.dump(
-    {"experiment": "EXP-05", "mse": mse, "r2": r2},
+    {"experiment": "EXP-06", "mse": mse, "r2": r2},
     open(f"{OUTPUT_DIR}/results.json", "w"),
     indent=4
 )
