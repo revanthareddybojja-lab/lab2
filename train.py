@@ -25,9 +25,8 @@ y = data["quality"]
 
 
 MODEL_TYPE = "linear"
-USE_SCALER = False
-TEST_SIZE = 0.2
-
+USE_SCALER = True
+TEST_SIZE = 0.3
 
 
 
@@ -40,11 +39,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=TEST_SIZE, random_state=42
 )
 
-model = LinearRegression(
-    n_estimators=100,
-    max_depth=15,
-    random_state=42
-)
+model = LinearRegression()
 
 
 
