@@ -40,7 +40,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=TEST_SIZE, random_state=42
 )
 
-model = RandomForestRegressor(
+model = LinearRegression(
     n_estimators=100,
     max_depth=15,
     random_state=42
