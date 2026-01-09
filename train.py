@@ -25,8 +25,9 @@ y = data["quality"]
 
 
 MODEL_TYPE = "linear"
-USE_SCALER = True
-TEST_SIZE = 0.3
+USE_SCALER = False
+TEST_SIZE = 0.2
+
 
 
 
